@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#071224" />
+  <title>JL Eventos | Orçamento para Som, LED e Iluminação</title>
+  <meta name="description" content="Monte seu orçamento para evento com painel de LED, iluminação, pista Paris, som e estrutura com a JL Eventos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="topbar">
+    <a href="#inicio" class="brand" aria-label="JL Eventos - Início">
+      <span class="brand-mark">JL</span>
+      <span>
+        <strong>JL Eventos</strong>
+        <small>SOUND QUALITY</small>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#montar">Montar orçamento</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <a class="nav-cta" id="topWhatsapp" target="_blank" rel="noopener">WhatsApp</a>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero section-shell">
+      <div class="hero-content reveal">
+        <p class="eyebrow">Som • Painel de LED • Iluminação • Pista Paris</p>
+        <h1>Monte o orçamento do seu evento em poucos cliques.</h1>
+        <p class="hero-text">
+          Escolha os equipamentos, defina quantidades e veja uma estimativa automática. Depois é só enviar para a JL Eventos finalizar os detalhes.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#montar">Montar agora</a>
+          <a class="btn btn-ghost" href="#servicos">Ver serviços</a>
+        </div>
+      </div>
+
+      <div class="hero-card reveal delay-1" aria-label="Destaques da JL Eventos">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="hero-card-inner">
+          <span class="live-pill"><span></span> orçamento ao vivo</span>
+          <h2>Evento com presença de palco.</h2>
+          <div class="meter-bars" aria-hidden="true">
+            <span style="height: 38%"></span>
+            <span style="height: 72%"></span>
+            <span style="height: 54%"></span>
+            <span style="height: 88%"></span>
+            <span style="height: 44%"></span>
+            <span style="height: 65%"></span>
+            <span style="height: 96%"></span>
+            <span style="height: 58%"></span>
+          </div>
+          <p>Painel de LED, iluminação e som para deixar sua festa com cara de produção profissional.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="montar" class="quote-section section-shell">
+      <div class="section-title reveal">
+        <p class="eyebrow">Calculadora de orçamento</p>
+        <h2>Escolha o que vai no seu evento</h2>
+        <p>Os valores abaixo são uma estimativa inicial. Frete, montagem e disponibilidade podem ser confirmados pelo WhatsApp.</p>
+      </div>
+
+      <div class="quote-grid">
+        <form class="quote-form reveal" id="quoteForm">
+          <div class="form-card client-card">
+            <h3>Dados do evento</h3>
+            <div class="field-grid">
+              <label>
+                Nome
+                <input type="text" id="clientName" placeholder="Ex: Maria Silva" autocomplete="name" />
+              </label>
+              <label>
+                Tipo de evento
+                <select id="eventType">
+                  <option value="Casamento">Casamento</option>
+                  <option value="Aniversário">Aniversário</option>
+                  <option value="Palestra">Palestra</option>
+                  <option value="Formatura">Formatura</option>
+                  <option value="Corporativo">Corporativo</option>
+                  <option value="Outro">Outro</option>
+                </select>
+              </label>
+              <label>
+                Data
+                <input type="date" id="eventDate" />
+              </label>
+              <label>
+                Cidade / local
+                <input type="text" id="eventCity" placeholder="Ex: Manhuaçu - MG" />
+              </label>
+              <label>
+                Quantidade de convidados
+                <input type="number" id="guests" min="0" placeholder="Ex: 150" />
+              </label>
+              <label>
+                Observação
+                <input type="text" id="notes" placeholder="Ex: ambiente aberto, precisa de estrutura..." />
+              </label>
+            </div>
+          </div>
+
+          <div class="form-card led-card">
+            <div class="card-heading">
+              <div>
+                <h3>Painel de LED</h3>
+                <p>R$ <span data-led-price>250</span> por metro²</p>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="useLed" checked />
+                <span></span>
+              </label>
+            </div>
+
+            <div class="led-controls" id="ledControls">
+              <div class="preset-row" aria-label="Tamanhos rápidos de painel de LED">
+                <button type="button" class="preset" data-w="2" data-h="1">2x1</button>
+                <button type="button" class="preset" data-w="3" data-h="2">3x2</button>
+                <button type="button" class="preset" data-w="4" data-h="2">4x2</button>
+                <button type="button" class="preset" data-w="5" data-h="2">5x2</button>
+              </div>
+
+              <div class="field-grid two-cols">
+                <label>
+                  Largura em metros
+                  <input type="number" id="ledWidth" min="0" step="0.5" value="4" />
+                </label>
+                <label>
+                  Altura em metros
+                  <input type="number" id="ledHeight" min="0" step="0.5" value="2" />
+                </label>
+              </div>
+              <div class="mini-total">
+                Área: <strong id="ledArea">8 m²</strong> • Valor: <strong id="ledTotal">R$ 2.000,00</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3>Iluminação</h3>
+            <div class="items-grid" id="lightingItems"></div>
+          </div>
+
+          <div class="form-card">
+            <h3>Extras</h3>
+            <div class="items-grid" id="extraItems"></div>
+          </div>
+        </form>
+
+        <aside class="summary-card reveal delay-1" aria-label="Resumo do orçamento">
+          <div class="summary-sticky">
+            <span class="summary-label">Resumo</span>
+            <h3>Estimativa do evento</h3>
+
+            <div class="summary-lines" id="summaryLines"></div>
+
+            <div class="summary-total">
+              <span>Total estimado</span>
+              <strong id="grandTotal">R$ 0,00</strong>
+            </div>
+
+            <div class="summary-actions">
+              <button class="btn btn-primary full" id="sendWhatsapp" type="button">Enviar orçamento no WhatsApp</button>
+              <button class="btn btn-ghost full" id="clearQuote" type="button">Limpar escolhas</button>
+            </div>
+
+            <p class="summary-note">*Valor sujeito a ajuste conforme cidade, estrutura, horário, montagem e disponibilidade.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="servicos" class="services section-shell">
+      <div class="section-title reveal">
+        <p class="eyebrow">O que a JL Eventos entrega</p>
+        <h2>Estrutura para seu evento brilhar sem improviso</h2>
+      </div>
+
+      <div class="service-grid">
+        <article class="service-card reveal">
+          <span>▦</span>
+          <h3>Painel de LED</h3>
+          <p>Ideal para casamentos, palestras, shows, telões, marcas e conteúdos personalizados.</p>
+        </article>
+        <article class="service-card reveal delay-1">
+          <span>✦</span>
+          <h3>Iluminação</h3>
+          <p>Moving beam, strobo atomic e efeitos para criar impacto visual durante o evento.</p>
+        </article>
+        <article class="service-card reveal delay-2">
+          <span>◈</span>
+          <h3>Pista Paris</h3>
+          <p>Pista 4x4 para deixar a entrada e a dança com visual premium.</p>
+        </article>
+        <article class="service-card reveal delay-3">
+          <span>♪</span>
+          <h3>Som profissional</h3>
+          <p>Equipamentos para voz, música, cerimônia, recepção e apresentações.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contato" class="contact section-shell reveal">
+      <div>
+        <p class="eyebrow">Vamos fechar seu evento?</p>
+        <h2>Chame a JL Eventos e finalize os detalhes.</h2>
+        <p>Depois de montar a estimativa, envie pelo WhatsApp para confirmar data, cidade e estrutura ideal.</p>
+      </div>
+      <a class="btn btn-primary" id="footerWhatsapp" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <strong>JL Eventos</strong>
+    <span>SOUND QUALITY • Atendemos todas as regiões</span>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

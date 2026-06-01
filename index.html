@@ -3,257 +3,220 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#071224" />
-  <title>JL Eventos | Orçamento para Som, LED e Iluminação</title>
-  <meta name="description" content="Monte seu orçamento para evento com painel de LED, iluminação, pista Paris, som e estrutura com a JL Eventos." />
+  <meta name="theme-color" content="#06162f" />
+  <title>JL Eventos | Orçamento para Som, LED, Iluminação e Pista Paris</title>
+  <meta name="description" content="Monte seu orçamento online para evento com painel de LED, iluminação, pista Paris, som e estrutura com a JL Eventos." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="noise"></div>
-
-  <header class="topbar">
-    <a href="#inicio" class="brand" aria-label="JL Eventos - Início">
+  <div class="bg-orbs" aria-hidden="true"><span></span><span></span><span></span></div>
+  <header class="topbar" id="topo">
+    <a href="#inicio" class="brand" aria-label="JL Eventos">
       <span class="brand-mark">JL</span>
-      <span>
-        <strong>JL Eventos</strong>
-        <small>SOUND QUALITY</small>
-      </span>
+      <span><strong data-company-name>JL Eventos</strong><small data-company-slogan>SOUND QUALITY</small></span>
     </a>
-
-    <nav class="nav" aria-label="Navegação principal">
-      <a href="#montar">Montar orçamento</a>
+    <button class="menu-btn" type="button" id="menuBtn" aria-label="Abrir menu">☰</button>
+    <nav class="nav" id="mainNav" aria-label="Navegação principal">
+      <a href="#montar">Orçamento</a>
+      <a href="#pacotes">Pacotes</a>
       <a href="#videos">Vídeos</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#contato">Contato</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#contrato">Contrato</a>
+      <a href="#admin">Admin</a>
     </nav>
-
     <a class="nav-cta" id="topWhatsapp" target="_blank" rel="noopener">WhatsApp</a>
   </header>
 
   <main>
-    <section id="inicio" class="hero section-shell">
-      <div class="hero-content reveal">
+    <section class="hero section-shell" id="inicio">
+      <div class="hero-copy reveal">
         <p class="eyebrow">Som • Painel de LED • Iluminação • Pista Paris</p>
-        <h1>Monte o orçamento do seu evento em poucos cliques.</h1>
-        <p class="hero-text">
-          Escolha os equipamentos, defina quantidades e veja uma estimativa automática. Depois é só enviar para a JL Eventos finalizar os detalhes.
-        </p>
+        <h1>Seu cliente monta o evento e o orçamento aparece na hora.</h1>
+        <p class="hero-text">Escolha equipamentos, veja vídeos demonstrativos, simule sinal, peça reserva da data e envie tudo pronto para a JL Eventos pelo WhatsApp.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#montar">Montar agora</a>
-          <a class="btn btn-ghost" href="#videos">Ver vídeos</a>
+          <a class="btn btn-primary" href="#montar">Montar orçamento</a>
+          <a class="btn btn-ghost" href="#pacotes">Ver pacotes</a>
+        </div>
+        <div class="hero-mini">
+          <span>⚡ Total automático</span>
+          <span>📄 PDF pelo navegador</span>
+          <span>📲 WhatsApp pronto</span>
         </div>
       </div>
-
-      <div class="hero-card reveal delay-1" aria-label="Destaques da JL Eventos">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="hero-card-inner">
-          <span class="live-pill"><span></span> orçamento ao vivo</span>
-          <h2>Evento com presença de palco.</h2>
-          <div class="meter-bars" aria-hidden="true">
-            <span style="height: 38%"></span>
-            <span style="height: 72%"></span>
-            <span style="height: 54%"></span>
-            <span style="height: 88%"></span>
-            <span style="height: 44%"></span>
-            <span style="height: 65%"></span>
-            <span style="height: 96%"></span>
-            <span style="height: 58%"></span>
-          </div>
-          <p>Painel de LED, iluminação e som para deixar sua festa com cara de produção profissional.</p>
+      <div class="hero-stage reveal delay-1">
+        <div class="stage-card">
+          <span class="live-pill"><i></i> orçamento ao vivo</span>
+          <h2 data-total-hero>R$ 0,00</h2>
+          <p>Valor estimado conforme os itens escolhidos.</p>
+          <div class="bars" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
+          <div class="stage-footer"><strong>JL Eventos</strong><span>Sound Quality</span></div>
         </div>
       </div>
     </section>
 
-    <section id="montar" class="quote-section section-shell">
+    <section id="montar" class="section-shell quote-section">
       <div class="section-title reveal">
-        <p class="eyebrow">Calculadora de orçamento</p>
-        <h2>Escolha o que vai no seu evento</h2>
-        <p>Os valores abaixo são uma estimativa inicial. Frete, montagem e disponibilidade podem ser confirmados pelo WhatsApp.</p>
+        <p class="eyebrow">Calculadora inteligente</p>
+        <h2>Monte o orçamento do evento</h2>
+        <p>O valor é uma estimativa. Frete, montagem, disponibilidade da data e detalhes técnicos são confirmados pela equipe.</p>
       </div>
 
-      <div class="quote-grid">
+      <div class="quote-layout">
         <form class="quote-form reveal" id="quoteForm">
-          <div class="form-card client-card">
-            <h3>Dados do evento</h3>
+          <article class="form-card">
+            <div class="card-title-row"><h3>Dados do cliente e evento</h3><span class="chip">1º passo</span></div>
             <div class="field-grid">
-              <label>
-                Nome
-                <input type="text" id="clientName" placeholder="Ex: Maria Silva" autocomplete="name" />
-              </label>
-              <label>
-                Tipo de evento
+              <label>Nome do cliente<input type="text" id="clientName" placeholder="Ex: Maria Silva" autocomplete="name"></label>
+              <label>Telefone<input type="tel" id="clientPhone" placeholder="Ex: (32) 99999-9999"></label>
+              <label>Tipo de evento
                 <select id="eventType">
-                  <option value="Casamento">Casamento</option>
-                  <option value="Aniversário">Aniversário</option>
-                  <option value="Palestra">Palestra</option>
-                  <option value="Formatura">Formatura</option>
-                  <option value="Corporativo">Corporativo</option>
-                  <option value="Outro">Outro</option>
+                  <option>Casamento</option><option>Aniversário</option><option>Palestra</option><option>Formatura</option><option>Evento corporativo</option><option>Show</option><option>Outro</option>
                 </select>
               </label>
-              <label>
-                Data
-                <input type="date" id="eventDate" />
-              </label>
-              <label>
-                Cidade / local
-                <input type="text" id="eventCity" placeholder="Ex: Manhuaçu - MG" />
-              </label>
-              <label>
-                Quantidade de convidados
-                <input type="number" id="guests" min="0" placeholder="Ex: 150" />
-              </label>
-              <label>
-                Observação
-                <input type="text" id="notes" placeholder="Ex: ambiente aberto, precisa de estrutura..." />
+              <label>Data do evento<input type="date" id="eventDate"></label>
+              <label>Cidade<input type="text" id="eventCity" placeholder="Ex: Manhuaçu - MG"></label>
+              <label>Local do evento<input type="text" id="eventPlace" placeholder="Ex: Espaço Gourmet"></label>
+              <label>Quantidade de convidados<input type="number" id="guests" min="0" placeholder="Ex: 150"></label>
+              <label>Horário aproximado<input type="time" id="eventTime"></label>
+            </div>
+            <label class="wide-label">Observações<textarea id="notes" rows="3" placeholder="Ex: ambiente aberto, precisa de estrutura, cerimônia no local..."></textarea></label>
+          </article>
+
+          <article class="form-card led-card">
+            <div class="card-title-row">
+              <div><h3>Painel de LED</h3><p>Preço por metro²: <strong id="ledPriceLabel">R$ 250,00</strong></p></div>
+              <label class="switch"><input type="checkbox" id="useLed" checked><span></span></label>
+            </div>
+            <button class="video-link" type="button" data-video-id="painelLed">▶ Ver vídeo demonstrativo</button>
+            <div class="preset-row">
+              <button type="button" class="preset" data-w="2" data-h="1">2x1</button>
+              <button type="button" class="preset" data-w="3" data-h="2">3x2</button>
+              <button type="button" class="preset" data-w="4" data-h="2">4x2</button>
+              <button type="button" class="preset" data-w="5" data-h="2">5x2</button>
+            </div>
+            <div class="field-grid two-cols">
+              <label>Largura em metros<input type="number" id="ledWidth" min="0" step="0.5"></label>
+              <label>Altura em metros<input type="number" id="ledHeight" min="0" step="0.5"></label>
+            </div>
+            <div class="calc-strip"><span>Área: <strong id="ledArea">0 m²</strong></span><span>Valor: <strong id="ledTotal">R$ 0,00</strong></span></div>
+          </article>
+
+          <article class="form-card">
+            <div class="card-title-row"><h3>Equipamentos e extras</h3><span class="chip">vídeos inclusos</span></div>
+            <div id="itemsContainer" class="items-container"></div>
+          </article>
+
+          <article class="form-card">
+            <div class="card-title-row"><h3>Deslocamento e reserva</h3><span class="chip">finalização</span></div>
+            <div class="field-grid two-cols">
+              <label>Valor de deslocamento, se quiser informar<input type="number" id="travelValue" min="0" step="10" placeholder="Ex: 200"></label>
+              <label>Sinal para reservar
+                <select id="signalPercent"><option value="30">30%</option><option value="50" selected>50%</option></select>
               </label>
             </div>
-          </div>
-
-          <div class="form-card led-card">
-            <div class="card-heading">
-              <div>
-                <h3>Painel de LED</h3>
-                <p>R$ <span data-led-price>250</span> por metro²</p>
-              </div>
-              <label class="switch">
-                <input type="checkbox" id="useLed" checked />
-                <span></span>
-              </label>
-            </div>
-
-            <button class="demo-chip" type="button" data-demo="painelLed">▶ Ver vídeo demonstrativo</button>
-
-            <div class="led-controls" id="ledControls">
-              <div class="preset-row" aria-label="Tamanhos rápidos de painel de LED">
-                <button type="button" class="preset" data-w="2" data-h="1">2x1</button>
-                <button type="button" class="preset" data-w="3" data-h="2">3x2</button>
-                <button type="button" class="preset" data-w="4" data-h="2">4x2</button>
-                <button type="button" class="preset" data-w="5" data-h="2">5x2</button>
-              </div>
-
-              <div class="field-grid two-cols">
-                <label>
-                  Largura em metros
-                  <input type="number" id="ledWidth" min="0" step="0.5" value="4" />
-                </label>
-                <label>
-                  Altura em metros
-                  <input type="number" id="ledHeight" min="0" step="0.5" value="2" />
-                </label>
-              </div>
-              <div class="mini-total">
-                Área: <strong id="ledArea">8 m²</strong> • Valor: <strong id="ledTotal">R$ 2.000,00</strong>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-card">
-            <h3>Iluminação</h3>
-            <div class="items-grid" id="lightingItems"></div>
-          </div>
-
-          <div class="form-card">
-            <h3>Extras</h3>
-            <div class="items-grid" id="extraItems"></div>
-          </div>
+            <p class="hint">Se deixar deslocamento vazio, o WhatsApp vai avisar que o frete será confirmado pela equipe.</p>
+          </article>
         </form>
 
-        <aside class="summary-card reveal delay-1" aria-label="Resumo do orçamento">
-          <div class="summary-sticky">
-            <span class="summary-label">Resumo</span>
-            <h3>Estimativa do evento</h3>
-
-            <div class="summary-lines" id="summaryLines"></div>
-
-            <div class="summary-total">
-              <span>Total estimado</span>
-              <strong id="grandTotal">R$ 0,00</strong>
-            </div>
-
-            <div class="summary-actions">
-              <button class="btn btn-primary full" id="sendWhatsapp" type="button">Enviar orçamento no WhatsApp</button>
-              <button class="btn btn-ghost full" id="clearQuote" type="button">Limpar escolhas</button>
-            </div>
-
-            <p class="summary-note">*Valor sujeito a ajuste conforme cidade, estrutura, horário, montagem e disponibilidade.</p>
+        <aside class="summary-card reveal delay-1" id="summaryCard">
+          <div class="summary-head">
+            <span class="chip hot">Resumo</span>
+            <button type="button" class="clear-btn" id="clearQuote">Limpar</button>
           </div>
+          <h3>Total estimado</h3>
+          <div class="grand-total" id="grandTotal">R$ 0,00</div>
+          <div class="summary-list" id="summaryList"></div>
+          <div class="signal-box"><span>Sinal estimado</span><strong id="signalValue">R$ 0,00</strong></div>
+          <div class="summary-actions">
+            <a class="btn btn-primary" id="sendWhatsapp" target="_blank" rel="noopener">Enviar orçamento</a>
+            <a class="btn btn-ghost" id="reserveWhatsapp" target="_blank" rel="noopener">Reservar data</a>
+            <a class="btn btn-soft" id="pixWhatsapp" target="_blank" rel="noopener">Solicitar Pix</a>
+            <button class="btn btn-outline" type="button" id="printQuote">Gerar PDF / imprimir</button>
+            <button class="btn btn-outline" type="button" id="copyQuote">Copiar orçamento</button>
+          </div>
+          <p class="small-note" id="reservationNote"></p>
         </aside>
       </div>
     </section>
 
-
-    <section id="videos" class="videos-section section-shell">
-      <div class="section-title reveal">
-        <p class="eyebrow">Vídeos demonstrativos</p>
-        <h2>Veja cada estrutura em ação antes de escolher</h2>
-        <p>Toque em qualquer vídeo para abrir maior. Depois você pode trocar os arquivos pelos vídeos reais da JL Eventos mantendo os mesmos nomes.</p>
-      </div>
-
-      <div class="video-grid" id="demoGrid"></div>
+    <section id="pacotes" class="section-shell">
+      <div class="section-title reveal"><p class="eyebrow">Pacotes prontos</p><h2>Para cliente que quer decidir rápido</h2><p>Um clique aplica uma sugestão de equipamentos. Depois a pessoa pode ajustar tudo.</p></div>
+      <div class="package-grid" id="packagesContainer"></div>
     </section>
 
-    <section id="servicos" class="services section-shell">
-      <div class="section-title reveal">
-        <p class="eyebrow">O que a JL Eventos entrega</p>
-        <h2>Estrutura para seu evento brilhar sem improviso</h2>
-      </div>
+    <section id="videos" class="section-shell">
+      <div class="section-title reveal"><p class="eyebrow">Vídeos demonstrativos</p><h2>A vitrine acesa do seu equipamento</h2><p>Troque os arquivos MP4 da pasta <strong>assets/videos</strong> quando tiver vídeos reais da JL.</p></div>
+      <div class="video-grid" id="videosContainer"></div>
+    </section>
 
-      <div class="service-grid">
-        <article class="service-card reveal">
-          <span>▦</span>
-          <h3>Painel de LED</h3>
-          <p>Ideal para casamentos, palestras, shows, telões, marcas e conteúdos personalizados.</p>
-        </article>
-        <article class="service-card reveal delay-1">
-          <span>✦</span>
-          <h3>Iluminação</h3>
-          <p>Moving beam, strobo atomic e efeitos para criar impacto visual durante o evento.</p>
-        </article>
-        <article class="service-card reveal delay-2">
-          <span>◈</span>
-          <h3>Pista Paris</h3>
-          <p>Pista 4x4 para deixar a entrada e a dança com visual premium.</p>
-        </article>
-        <article class="service-card reveal delay-3">
-          <span>♪</span>
-          <h3>Som profissional</h3>
-          <p>Equipamentos para voz, música, cerimônia, recepção e apresentações.</p>
-        </article>
+    <section id="galeria" class="section-shell">
+      <div class="section-title reveal"><p class="eyebrow">Galeria</p><h2>Eventos realizados pela JL Eventos</h2><p>Use essa área para colocar fotos reais de montagens, pistas, painéis e iluminação.</p></div>
+      <div class="gallery-grid" id="galleryContainer"></div>
+    </section>
+
+    <section id="depoimentos" class="section-shell testimonials-section">
+      <div class="section-title reveal"><p class="eyebrow">Prova social</p><h2>Depoimentos de clientes</h2></div>
+      <div class="testimonial-grid" id="testimonialsContainer"></div>
+    </section>
+
+    <section id="contrato" class="section-shell contract-section">
+      <div class="section-title reveal"><p class="eyebrow">Contrato automático</p><h2>Modelo simples com os dados do orçamento</h2><p>Preencha o orçamento, clique para atualizar e imprima em PDF. Revise antes de enviar ao cliente.</p></div>
+      <div class="contract-actions reveal">
+        <button class="btn btn-primary" type="button" id="refreshContract">Atualizar contrato</button>
+        <button class="btn btn-outline" type="button" id="printContract">Gerar PDF / imprimir contrato</button>
+        <button class="btn btn-outline" type="button" id="copyContract">Copiar contrato</button>
+      </div>
+      <article class="contract-paper reveal" id="contractPaper"></article>
+    </section>
+
+    <section id="admin" class="section-shell admin-section">
+      <div class="section-title reveal"><p class="eyebrow">Área administrativa</p><h2>Editar preços e textos sem mexer no código</h2><p>Senha padrão: <strong>JL2026</strong>. Esta área salva os ajustes apenas no navegador usado.</p></div>
+      <div class="admin-login" id="adminLoginBox">
+        <input type="password" id="adminPassword" placeholder="Digite a senha do admin">
+        <button class="btn btn-primary" type="button" id="adminLogin">Entrar</button>
+      </div>
+      <div class="admin-panel hidden" id="adminPanel">
+        <div class="admin-toolbar"><span class="chip hot">Admin ativo</span><button class="btn btn-outline" type="button" id="resetConfig">Restaurar padrão</button></div>
+        <div class="admin-grid">
+          <label>Nome da empresa<input id="adminCompanyName" type="text"></label>
+          <label>Slogan<input id="adminSlogan" type="text"></label>
+          <label>WhatsApp com DDI<input id="adminWhatsapp" type="text"></label>
+          <label>Senha admin<input id="adminNewPassword" type="text"></label>
+          <label>Preço do LED por m²<input id="adminLedPrice" type="number" min="0" step="10"></label>
+          <label>Sinal padrão %<input id="adminSignal" type="number" min="0" max="100" step="5"></label>
+        </div>
+        <h3>Itens do orçamento</h3>
+        <div id="adminItems"></div>
+        <div class="admin-actions">
+          <button class="btn btn-soft" type="button" id="addAdminItem">Adicionar item</button>
+          <button class="btn btn-primary" type="button" id="saveAdmin">Salvar alterações</button>
+        </div>
       </div>
     </section>
 
-    <section id="contato" class="contact section-shell reveal">
-      <div>
-        <p class="eyebrow">Vamos fechar seu evento?</p>
-        <h2>Chame a JL Eventos e finalize os detalhes.</h2>
-        <p>Depois de montar a estimativa, envie pelo WhatsApp para confirmar data, cidade e estrutura ideal.</p>
+    <section id="contato" class="section-shell final-cta">
+      <div class="final-card reveal">
+        <p class="eyebrow">Vamos montar esse evento?</p>
+        <h2>Receba o orçamento direto no WhatsApp e finalize com a JL Eventos.</h2>
+        <a class="btn btn-primary" id="bottomWhatsapp" target="_blank" rel="noopener">Falar com a JL Eventos</a>
       </div>
-      <a class="btn btn-primary" id="footerWhatsapp" target="_blank" rel="noopener">Falar no WhatsApp</a>
     </section>
   </main>
 
-  <footer class="footer">
-    <strong>JL Eventos</strong>
-    <span>SOUND QUALITY • Atendemos todas as regiões</span>
-  </footer>
-
-
-  <div class="video-modal" id="videoModal" aria-hidden="true">
-    <div class="video-modal-backdrop" data-close-video></div>
-    <div class="video-modal-box" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
-      <button class="video-close" type="button" data-close-video aria-label="Fechar vídeo">×</button>
-      <h3 id="videoModalTitle">Vídeo demonstrativo</h3>
-      <video id="videoPlayer" controls playsinline preload="metadata"></video>
-      <p id="videoModalText">Demonstração visual do equipamento selecionado.</p>
+  <div class="video-modal hidden" id="videoModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Vídeo demonstrativo">
+      <button class="modal-close" type="button" data-close-modal>×</button>
+      <h3 id="modalTitle">Vídeo demonstrativo</h3>
+      <video id="modalVideo" controls playsinline></video>
     </div>
   </div>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <section class="print-area" id="quotePrintArea"></section>
+
   <script src="config.js"></script>
   <script src="script.js"></script>
 </body>

@@ -25,6 +25,7 @@
 
     <nav class="nav" aria-label="Navegação principal">
       <a href="#montar">Montar orçamento</a>
+      <a href="#videos">Vídeos</a>
       <a href="#servicos">Serviços</a>
       <a href="#contato">Contato</a>
     </nav>
@@ -42,7 +43,7 @@
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#montar">Montar agora</a>
-          <a class="btn btn-ghost" href="#servicos">Ver serviços</a>
+          <a class="btn btn-ghost" href="#videos">Ver vídeos</a>
         </div>
       </div>
 
@@ -125,6 +126,8 @@
               </label>
             </div>
 
+            <button class="demo-chip" type="button" data-demo="painelLed">▶ Ver vídeo demonstrativo</button>
+
             <div class="led-controls" id="ledControls">
               <div class="preset-row" aria-label="Tamanhos rápidos de painel de LED">
                 <button type="button" class="preset" data-w="2" data-h="1">2x1</button>
@@ -183,6 +186,17 @@
       </div>
     </section>
 
+
+    <section id="videos" class="videos-section section-shell">
+      <div class="section-title reveal">
+        <p class="eyebrow">Vídeos demonstrativos</p>
+        <h2>Veja cada estrutura em ação antes de escolher</h2>
+        <p>Toque em qualquer vídeo para abrir maior. Depois você pode trocar os arquivos pelos vídeos reais da JL Eventos mantendo os mesmos nomes.</p>
+      </div>
+
+      <div class="video-grid" id="demoGrid"></div>
+    </section>
+
     <section id="servicos" class="services section-shell">
       <div class="section-title reveal">
         <p class="eyebrow">O que a JL Eventos entrega</p>
@@ -227,6 +241,17 @@
     <strong>JL Eventos</strong>
     <span>SOUND QUALITY • Atendemos todas as regiões</span>
   </footer>
+
+
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-modal-backdrop" data-close-video></div>
+    <div class="video-modal-box" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+      <button class="video-close" type="button" data-close-video aria-label="Fechar vídeo">×</button>
+      <h3 id="videoModalTitle">Vídeo demonstrativo</h3>
+      <video id="videoPlayer" controls playsinline preload="metadata"></video>
+      <p id="videoModalText">Demonstração visual do equipamento selecionado.</p>
+    </div>
+  </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="config.js"></script>

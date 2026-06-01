@@ -26,6 +26,11 @@ const elements = {
   summaryLines: $("#summaryLines"),
   lightingItems: $("#lightingItems"),
   extraItems: $("#extraItems"),
+  demoGrid: $("#demoGrid"),
+  videoModal: $("#videoModal"),
+  videoPlayer: $("#videoPlayer"),
+  videoModalTitle: $("#videoModalTitle"),
+  videoModalText: $("#videoModalText"),
   toast: $("#toast")
 };
 
@@ -53,6 +58,54 @@ function renderPriceLabels() {
   if (ledLabel) ledLabel.textContent = config.led.precoMetro;
 }
 
+function getAllItems() {
+  return [...config.iluminacao, ...config.extras];
+}
+
+function getDemoItems() {
+  return [
+    {
+      id: config.led.id,
+      nome: config.led.nome,
+      descricao: config.led.descricao,
+      precoTexto: `${money(config.led.precoMetro)} / ${config.led.unidade}`,
+      video: config.led.video
+    },
+    ...getAllItems().map((item) => ({
+      id: item.id,
+      nome: item.nome,
+      descricao: item.descricao,
+      precoTexto: item.preco > 0 ? `${money(item.preco)} / ${item.unidade}` : item.unidade,
+      video: item.video
+    }))
+  ].filter((item) => item.video?.arquivo);
+}
+
+function findDemoById(id) {
+  return getDemoItems().find((item) => item.id === id);
+}
+
+function openVideo(id) {
+  const demo = findDemoById(id);
+  if (!demo) return;
+
+  elements.videoModalTitle.textContent = demo.video.titulo || demo.nome;
+  elements.videoModalText.textContent = demo.descricao;
+  elements.videoPlayer.poster = demo.video.poster || "";
+  elements.videoPlayer.src = demo.video.arquivo;
+  elements.videoModal.classList.add("show");
+  elements.videoModal.setAttribute("aria-hidden", "false");
+  elements.videoPlayer.play().catch(() => {});
+}
+
+function closeVideo() {
+  elements.videoPlayer.pause();
+  elements.videoPlayer.removeAttribute("src");
+  elements.videoPlayer.load();
+  elements.videoModal.classList.remove("show");
+  elements.videoModal.setAttribute("aria-hidden", "true");
+}
+
 function createItemCard(item) {
   state.quantities[item.id] = 0;
 
@@ -63,6 +116,7 @@ function createItemCard(item) {
       <h4>${item.nome}</h4>
       <p>${item.descricao}</p>
       <strong>${item.preco > 0 ? `${money(item.preco)} / ${item.unidade}` : item.unidade}</strong>
+      ${item.video?.arquivo ? `<button class="demo-chip small" type="button" data-demo="${item.id}">▶ Ver vídeo</button>` : ""}
     </div>
     <div class="qty" aria-label="Quantidade de ${item.nome}">
       <button type="button" data-action="minus" data-id="${item.id}">−</button>
@@ -71,7 +125,7 @@ function createItemCard(item) {
     </div>
   `;
 
-  card.querySelectorAll("button").forEach((button) => {
+  card.querySelectorAll("button[data-action]").forEach((button) => {
     button.addEventListener("click", () => {
       const id = button.dataset.id;
       const current = state.quantities[id] || 0;
@@ -95,15 +149,42 @@ function renderItems() {
   config.extras.forEach((item) => elements.extraItems.appendChild(createItemCard(item)));
 }
 
+function createDemoCard(item, index) {
+  const card = document.createElement("article");
+  card.className = `video-card reveal delay-${Math.min(index, 3)}`;
+  card.innerHTML = `
+    <button class="video-preview" type="button" data-demo="${item.id}" aria-label="Abrir ${item.nome}">
+      <video muted loop playsinline preload="metadata" poster="${item.video.poster || ""}">
+        <source src="${item.video.arquivo}" type="video/mp4" />
+      </video>
+      <span class="play-badge">▶</span>
+    </button>
+    <div class="video-info">
+      <span>${item.precoTexto}</span>
+      <h3>${item.nome}</h3>
+      <p>${item.descricao}</p>
+      <button class="demo-chip small" type="button" data-demo="${item.id}">Ver demonstração</button>
+    </div>
+  `;
+
+  const previewVideo = card.querySelector("video");
+  previewVideo.addEventListener("mouseenter", () => previewVideo.play().catch(() => {}));
+  previewVideo.addEventListener("mouseleave", () => previewVideo.pause());
+
+  return card;
+}
+
+function renderDemos() {
+  if (!elements.demoGrid) return;
+  elements.demoGrid.innerHTML = "";
+  getDemoItems().forEach((item, index) => elements.demoGrid.appendChild(createDemoCard(item, index)));
+}
+
 function setQuantity(id, quantity) {
   state.quantities[id] = quantity;
   const input = document.querySelector(`input[data-id="${id}"]`);
   if (input) input.value = quantity;
   calculate();
-}
-
-function getAllItems() {
-  return [...config.iluminacao, ...config.extras];
 }
 
 function getLedCalculation() {
@@ -238,6 +319,23 @@ function bindEvents() {
     });
   });
 
+  document.addEventListener("click", (event) => {
+    const demoButton = event.target.closest("[data-demo]");
+    if (demoButton) {
+      openVideo(demoButton.dataset.demo);
+    }
+
+    if (event.target.closest("[data-close-video]")) {
+      closeVideo();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && elements.videoModal.classList.contains("show")) {
+      closeVideo();
+    }
+  });
+
   elements.sendWhatsapp.addEventListener("click", () => {
     const message = buildWhatsappMessage();
     window.open(whatsappBase(message), "_blank", "noopener");
@@ -267,6 +365,7 @@ function init() {
   updateWhatsappLinks();
   renderPriceLabels();
   renderItems();
+  renderDemos();
   bindEvents();
   revealOnScroll();
   calculate();
